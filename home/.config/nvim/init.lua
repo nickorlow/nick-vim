@@ -88,8 +88,14 @@ require("lazy").setup({
             {'L3MON4D3/LuaSnip'},             -- Required
             {'rafamadriz/friendly-snippets'}, -- Optional
         }
-    },
-
+    },{
+  "ray-x/lsp_signature.nvim",
+  event = "VeryLazy",
+  opts = {},
+  config = function(_, opts) require'lsp_signature'.setup(opts) end
+},
+{'junegunn/rainbow_parentheses.vim'},
+{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
    autoInstall = true,
 }
 )
@@ -155,10 +161,13 @@ lsp.preset('recommended')
 
 -- (Optional) Configure lua language server for neovim
 lsp.nvim_workspace()
+lsp.set_preferences({
+  suggest_lsp_servers = false,
+  });
 lsp.setup()
 
 require("mason-lspconfig").setup {
-    ensure_installed = { "clangd", "rust_analyzer" },
+    ensure_installed = { "clangd", "rust_analyzer", "onmisharp", "gopls", "python-lsp-server", "javascript-typescript" },
 }
 vim.diagnostic.config({
   virtual_text = true,
@@ -179,5 +188,10 @@ vim.opt.fillchars = vim.opt.fillchars + { vert = '│' }
 
 -- BEGIN LSP CONFIG
 
+require("catppuccin").setup({
+    flavour = "mocha", -- latte, frappe, macchiato, mocha
+})
 
-
+vim.cmd('colorscheme catppuccin')
+vim.g.rainbow_pairs = {{'(', ')'}, {'[', ']'}, {'{', '}'}}
+vim.cmd('RainbowParentheses')

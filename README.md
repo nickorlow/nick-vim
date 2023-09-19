@@ -7,5 +7,9 @@ Based on neovim, run in docker.
 - C
 - C++
 - C#
+- Go
 - Javascript + Typescript
 - Python (unfortunately)
+- Zig
+- OCaml
+- Erlang
