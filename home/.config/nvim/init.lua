@@ -41,6 +41,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 require("lazy").setup({
+  {'verible-verilog-ls', '--rules_config_search'},
 {
   "nvim-tree/nvim-tree.lua",
   version = "*",
@@ -97,6 +98,19 @@ require("lazy").setup({
 {'junegunn/rainbow_parentheses.vim'},
 { "catppuccin/nvim", name = "catppuccin", priority = 1000 },
    autoInstall = true,
+}, 
+{
+    "Yoolayn/nvim-intro",
+ opts = {
+        intro = {
+            "NIck VI iMproved",
+            "----------------",
+            "    Welcome!    ",
+        },
+        color = "#98c379",
+        scratch = false,
+    },
+    lazy = false
 }
 )
 
@@ -169,6 +183,23 @@ lsp.setup()
 require("mason-lspconfig").setup {
     ensure_installed = { "clangd", "rust_analyzer", "onmisharp", "gopls", "python-lsp-server", "javascript-typescript" },
 }
+
+local lspconfig = require("lspconfig")
+local lspconfig_util = require("lspconfig.util")
+
+-- Rust Analyzer Setup
+lspconfig.rust_analyzer.setup({
+	filetypes = { "rust" },
+    settings = {
+    	["rust-analyzer"] = {
+    		cargo = {
+    			allFeatures = true,
+    			autoReload = true,
+    		},
+    	},
+    },
+})
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -195,3 +226,4 @@ require("catppuccin").setup({
 vim.cmd('colorscheme catppuccin')
 vim.g.rainbow_pairs = {{'(', ')'}, {'[', ']'}, {'{', '}'}}
 vim.cmd('RainbowParentheses')
+

@@ -13,3 +13,4 @@ Based on neovim, run in docker.
 - Zig
 - OCaml
 - Erlang
+- Verilog
