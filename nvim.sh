@@ -12,4 +12,4 @@ xhost +local: &> /dev/null
 docker exec -w /work -u $(id -u ${USER}):$(id -g ${USER}) -it $container_name  /nvim-linux64/bin/nvim '+set clipboard=unnamedplus' $1
 
 #echo Stopping container in background...
-docker stop $container_name &> /dev/null &
+docker kill $container_name &> /dev/null &
