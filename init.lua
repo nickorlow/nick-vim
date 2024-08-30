@@ -40,7 +40,7 @@ end
 vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 require("lazy").setup({
-    { 'verible-verilog-ls',                 '--rules_config_search' },
+    --{ 'verible-verilog-ls',                 '--rules_config_search' },
     {
         "nvim-tree/nvim-tree.lua",
         version = "*",

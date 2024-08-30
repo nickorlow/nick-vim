@@ -38,3 +38,5 @@ dependencies:
 - libllvm18=18.1.2=h2448989_0
 - xclip=0.13 
 - ripgrep=14.1.0
+- nodejs=20.12.2
+- unzip=6.0
